@@ -8,12 +8,26 @@ function getComputerChoice() {
     return compInput;
 }
 
+function validateInput(choice){
+    return choices.includes(choice);
+}
+
+
 function getPlayerChoice() {
     let input = prompt("Choose rock, paper, or scissors");
     while (input === null) {
         input = prompt("Choose rock, paper, or scissors");
     }
     input = input.toLowerCase();
+    let check = validateInput(input);
+    while (check === false){
+        input = prompt("Choose rock, paper, or scissors. Spelling must be accurate.");
+        while (input === null) {
+            input = prompt("Choose rock, paper, or scissors");
+        }
+        input = input.toLowerCase();
+        check = validateInput(input);
+    }
     return input;
 }
 
