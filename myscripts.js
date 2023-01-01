@@ -1,6 +1,5 @@
 const choices = ["rock", "paper", "scissors"];
-const playerSelection = getPlayerChoice();
-const computerSelection = getComputerChoice();
+
 
 
 function getComputerChoice() {
@@ -10,26 +9,32 @@ function getComputerChoice() {
 
 function getPlayerChoice() {
     let input = prompt("Choose rock, paper, or scissors");
-    while (input === null){
+    while (input === null) {
         input = prompt("Choose rock, paper, or scissors");
     }
     input = input.toLowerCase();
     return input;
 }
 
-function playRound(playerSelection, computerSelection){
-    if (playerSelection === "rock" && computerSelection === "scissors"){
+function playRound(playerSelection, computerSelection) {
+    if (playerSelection === "rock" && computerSelection === "scissors") {
         console.log(`You win! You chose ${playerSelection} and computer chose ${computerSelection}.`);
-    } else if(playerSelection === "scissors" && computerSelection === "paper"){
+    } else if (playerSelection === "scissors" && computerSelection === "paper") {
         console.log(`You win! You chose ${playerSelection} and computer chose ${computerSelection}.`);
-    } else if(playerSelection === "paper" && computerSelection === "rock"){
+    } else if (playerSelection === "paper" && computerSelection === "rock") {
         console.log(`You win! You chose ${playerSelection} and computer chose ${computerSelection}.`)
-    } else if (playerSelection === computerSelection){
+    } else if (playerSelection === computerSelection) {
         console.log(`You Tie! You both chose ${playerSelection}.`);
-    } else{
+    } else {
         console.log(`You Lost! You chose ${playerSelection} and computer chose ${computerSelection}.`);
     }
-
+    return playerSelection, computerSelection;
 }
 
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+    for (i = 0; i < 5; i++) {
+        const playerSelection = getPlayerChoice();
+        const computerSelection = getComputerChoice();
+        playRound(playerSelection, computerSelection);
+    }
+}
