@@ -1,5 +1,6 @@
 const choices = ["rock", "paper", "scissors"];
-
+let playerScore = 0;
+let computerScore = 0;
 
 
 function getComputerChoice() {
@@ -18,23 +19,45 @@ function getPlayerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === "rock" && computerSelection === "scissors") {
-        console.log(`You win! You chose ${playerSelection} and computer chose ${computerSelection}.`);
+        playerScore++;
+        return `You win! You chose ${playerSelection} and computer chose ${computerSelection}.`;
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
-        console.log(`You win! You chose ${playerSelection} and computer chose ${computerSelection}.`);
+        playerScore++;
+        return `You win! You chose ${playerSelection} and computer chose ${computerSelection}.`;
     } else if (playerSelection === "paper" && computerSelection === "rock") {
-        console.log(`You win! You chose ${playerSelection} and computer chose ${computerSelection}.`)
+        playerScore++;
+        return `You win! You chose ${playerSelection} and computer chose ${computerSelection}.`;
     } else if (playerSelection === computerSelection) {
-        console.log(`You Tie! You both chose ${playerSelection}.`);
+        return `You Tie! You both chose ${playerSelection}.`;
     } else {
-        console.log(`You Lost! You chose ${playerSelection} and computer chose ${computerSelection}.`);
+        computerScore++;
+        return `You Lost! You chose ${playerSelection} and computer chose ${computerSelection}.`;
     }
-    return playerSelection, computerSelection;
 }
 
+function logRound(round) {
+    console.log("Round: ", round);
+}
+
+
+
 function game() {
-    for (i = 0; i < 5; i++) {
+
+    for (i = 1; i < 6; i++) {
+        let round = i;
         const playerSelection = getPlayerChoice();
         const computerSelection = getComputerChoice();
-        playRound(playerSelection, computerSelection);
+        logRound(round);
+        console.log(playRound(playerSelection, computerSelection));
+        console.log("Player Score: ", playerScore);
+        console.log("Computer Score: ", computerScore);
+        console.log("<------------>");
+    }
+    if (playerScore > computerScore){
+        console.log("You win the game!");
+    } else if ( playerScore == computerScore){
+        console.log("The game is a tie!");
+    } else {
+        console.log("You lost the game!");
     }
 }
