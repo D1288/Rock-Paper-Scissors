@@ -75,3 +75,14 @@ function game() {
         console.log("You lost the game!");
     }
 }
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach(button => {
+    button.addEventListener('click', (e) => {
+       let playerSelection = e.target
+        console.log(playerSelection)
+    } );
+});
+
+
