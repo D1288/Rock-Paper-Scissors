@@ -20,6 +20,7 @@ button {
     text-align: center;
     font-size: 45px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
